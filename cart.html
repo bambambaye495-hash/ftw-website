@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FREETHEWORLD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #111;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    main {
+      padding: 60px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 20px 0;
+    }
+
+    .cart-item h3 {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .cart-item span {
+      font-weight: 500;
+    }
+
+   .remove {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.remove:hover {
+  color: #000;
+  transform: scale(1.1);
+}
+
+
+    .summary {
+      margin-top: 40px;
+      border-top: 2px solid #000;
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .checkout {
+      padding: 14px 40px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    footer {
+      border-top: 1px solid #eee;
+      padding: 40px 60px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      header, main, footer {
+        padding: 20px;
+      }
+
+      .summary {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">FREETHEWORLD</a>
+  <a href="index.html">← Continue Shopping</a>
+</header>
+
+<main>
+  <h1>Your Cart</h1>
+
+  <div id="cart-items"></div>
+
+  <div class="summary">
+    <h2>Total: <span id="total">0</span> FCFA</h2>
+    <button class="checkout" onclick="checkout()">Checkout via WhatsApp</button>
+  </div>
+</main>
+
+<footer>
+  © 2025 FREETHEWORLD — Senegal
+</footer>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const container = document.getElementById('cart-items');
+  const totalEl = document.getElementById('total');
+
+  function renderCart() {
+    container.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      total += item.price;
+
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <h3>${item.name}</h3>
+        <span>${item.price} FCFA</span>
+        <button class="remove" onclick="removeItem(${index})">Remove</button>
+      `;
+      container.appendChild(div);
+    });
+
+    totalEl.innerText = total;
+  }
+
+  function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  function checkout() {
+    let message = 'Hello FREETHEWORLD, I want to order:%0A';
+    cart.forEach(item => {
+      message += `- ${item.name} (${item.price} FCFA)%0A`;
+    });
+    message += `%0ATotal: ${totalEl.innerText} FCFA`;
+
+    window.open(`https://wa.me/221771409561?text=${message}`, '_blank');
+  }
+
+  renderCart();
+</script>
+
+</body>
+</html>
