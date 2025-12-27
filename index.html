@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FREETHEWORLD</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    .cart-icon { position: relative; font-size: 18px; }
+    #cart-count { background:#000; color:#fff; font-size:12px; padding:2px 6px; border-radius:50%; margin-left:4px; }
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #111;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+  
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  border-bottom: 1px solid #eee;
+
+  /* NEW */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+nav a {
+  margin-left: 30px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+    /* HERO */
+    .hero {
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      padding: 14px 40px;
+      border: none;
+      background: #000;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      border-radius: 50px;
+    }
+
+    .hero button:hover {
+      transform: scale(1.05);
+    }
+
+    /* PRODUCTS */
+    .products {
+      padding: 80px 60px;
+    }
+
+    .products h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product {
+      border: 1px solid #eee;
+      padding: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      background: #f5f5f5;
+      margin-bottom: 15px;
+    }
+
+    .product h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .product button {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #000;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+      border-radius: 15px;
+    }
+
+    .product button:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #eee;
+      padding: 40px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      font-size: 14px;
+    }
+
+    footer h4 {
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    footer p, footer a {
+      color: #555;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 30px;
+      color: #777;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header {
+        padding: 20px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .products {
+        padding: 60px 20px;
+      }
+
+      footer {
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">FTW.TTR</div>
+
+  <div class="nav">
+      <nav>
+      <a href="#">Home</a>
+      <a href="#products">Shop</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>FREE THE WORLD</h1>
+      <p><h3>Take The Risk.</h3></p>
+      <button onclick="scrollToShop()" >Shop Now</button>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <h2>Latest Products</h2>
+    <div class="grid">
+
+      <!-- 9 PRODUCTS -->
+      <div class="product"><img src="ftw1.jpg.jpeg" alt="Product1"><h3>FREETHEWORLD Tee 01</h3><div class="price">6000 FCFA</div><button>Add to Cart</button></div>
+      <div class="product"><img src="FTW2.jpg.jpeg" alt="Product2"><h3>FREETHEWORLD Tee 02</h3><div class="price">6000 FCFA</div><button>Add to Cart</button></div>
+      <div class="product"><img src="ftw3.jpg.jpeg" alt="Product3"><h3>FREETHEWORLD Tee 03</h3><div class="price">6000 FCFA/pcs</div><button>Add to Cart</button></div>
+      <div class="product"><img src="ftw4.jpg.jpeg" alt="Product4"><h3>FREETHEWORLD Tee 04</h3><div class="price">6000 FCFA</div><button>Add to Cart</button></div>
+      <div class="product"><img src="ftw5.jpg.jpeg" alt="Product5"><h3>FREETHEWORLD Tee 05</h3><div class="price">6000 FCFA</div><button>Add to Cart</button></div>
+      <div class="product"><img src="ftw6.jpg.jpeg" alt="Product6"><h3>FREETHEWORLD Tee 06</h3><div class="price">6000 FCFA</div><button>Add to Cart</button></div>
+      <div class="product"><img src="ftw7.jpg.jpeg" alt="Product7"><h3>FREETHEWORLD Tee 07</h3><div class="price">7000 FCFA</div><button>Add to Cart</button></div>
+      <div class="product"><img src="ftw8.jpg.jpeg" alt="Product8"><h3>FREETHEWORLD Tee 08</h3><div class="price">7000 FCFA</div><button>Add to Cart</button></div>
+      <div class="product"><img src="ftw9.jpg.jpeg" alt="Product9"><h3>FREETHEWORLD Tee 09</h3><div class="price">6000 FCFA</div><button>Add to Cart</button></div>
+      <div class="product"><img src="ftw10.jpg.jpeg" alt="product10"><h3>FREETHEWORLD TEE 10</h3><div class="price">7000 FCFA</div><button>Add to Cart</button></div>
+      <div class="product"><img src="ftw11.jpg.jpeg" alt="product11"><h3>FREETHEWORLD TEE 11</h3><div class="price">6000 FCFA</div><button>Add to Cart</button></div>
+      <div class="product"><img src="ftw12.jpg.jpeg" alt="product12"><h3>FREETHEWORLD TEE 12</h3><div class="price">6000 FCFA</div><button>Add to Cart</button></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <h4>FREETHEWORLD</h4>
+      <p>Streetwear brand born in Senegal.</p>
+    </div>
+
+    <div>
+      <h4>Shop</h4>
+      <a href="#">All Products</a>
+      <a href="#">New Drops</a>
+      <a href="#">Best Sellers</a>
+    </div>
+
+    <div>
+      <h4>Support</h4>
+      <a href="#">Contact</a>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+    </div>
+
+    <div>
+      <h4>Follow Us</h4>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="https://wa.me/221771409561">WhatsApp</a>
+    </div>
+
+    <div class="copyright">© 2025 FREETHEWORLD. All rights reserved.</div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+ <script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartCount = document.getElementById('cart-count');
+
+  // Update cart count on load
+  cartCount.innerText = cart.length;
+
+  document.querySelectorAll('.product button').forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      const productName = document.querySelectorAll('.product h3')[index].innerText;
+
+      const product = {
+        name: productName,
+        price: 6000
+      };
+
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      cartCount.innerText = cart.length;
+    });
+  });
+
+  function scrollToShop() {
+    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+</script>
+
+
+</body>
+</html>
